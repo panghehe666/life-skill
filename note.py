@@ -38,13 +38,13 @@ while 1:
     df.to_csv('xsb.csv', index=False)
     print('Ok to make note')
     
- elif a=='exit':
+  elif a=='exit':
     print('Bye')
     break
 
- elif 'ov' in a:
+  elif 'ov' in a:
     df = pd.read_csv('xsb.csv')
-    line = [int(num) for num in re.findelse:all(r'\d+', a)]
+    line = [int(num) for num in re.findall(r'\d+', a)]
     df = df.drop(line)
     df.to_csv('xsb.csv', index=False)
     print('Over to removed note')
