@@ -1,0 +1,64 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-irline-themes'
+" 原地址
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+" 国内镜像
+call vundle#end()
+filetype plugin indent on
+
+syntax enable
+set background=dark
+colorscheme gruvbox
+set number
+
+" Termux优化
+set t_Co=256
+let g:gruvbox_termcolors=256
+
+" 十字光标
+set cursorline
+hi CursorLine cterm=NONE ctermbg=236
+set cursorcolumn
+hi CursorColumn cterm=NONE ctermbg=236
+
+" Airline
+let g:airline_theme='gruvbox'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+" 缩进指南
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+hi IndentGuidesOdd  ctermbg=237
+hi IndentGuidesEven ctermbg=238
+
+" 输入 2 个字符就开始补全，减少延迟
+
+" 关闭 Tab 触发，完全自动
+let g:deoplete#disable_auto_complete = 0
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" 加载刚才手动生成的关键字字典
+set dictionary=~/.vim/dict/python.dic
+set complete+=k
+" 用普通三角 ▶ / ◀ 取代 Powerline 箭头
+let g:airline_left_sep      = '▶'
+let g:airline_left_alt_sep  = '▷'
+let g:airline_right_sep     = '◀'
+let g:airline_right_alt_sep = '◁'
+let g:airline_left_sep  = '▶'   " 右向三角
+let g:airline_right_sep = '◀'  " 左向三角
+	
